@@ -1,0 +1,22 @@
+
+State Machine - |DE1_SoC_3|counter:displayWinner|ps2
+Name ps2~8 ps2~7 ps2~6 ps2~5 ps2~4 ps2~3 ps2~2 
+ps2.score20 0 0 0 0 0 0 0 
+ps2.score25 1 0 1 0 0 1 0 
+ps2.score24 1 0 1 1 0 0 1 
+ps2.score22 1 1 0 0 1 0 0 
+ps2.score23 1 1 1 0 0 0 0 
+ps2.score26 1 0 0 0 0 1 0 
+ps2.score27 0 1 1 1 0 0 0 
+ps2.score21 0 1 1 1 0 0 1 
+
+State Machine - |DE1_SoC_3|counter:displayWinner|ps1
+Name ps1~8 ps1~7 ps1~6 ps1~5 ps1~4 ps1~3 ps1~2 
+ps1.score10 0 0 0 0 0 0 0 
+ps1.score15 1 0 1 0 0 1 0 
+ps1.score14 1 0 1 1 0 0 1 
+ps1.score12 1 1 0 0 1 0 0 
+ps1.score13 1 1 1 0 0 0 0 
+ps1.score16 1 0 0 0 0 1 0 
+ps1.score17 0 1 1 1 0 0 0 
+ps1.score11 0 1 1 1 0 0 1 
