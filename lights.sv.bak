@@ -1,0 +1,75 @@
+module lights (clk, reset, SW, LEDR);
+	output logic [2:0] LEDR; 
+	input logic [1:0] SW;
+	input logic clk, reset;
+	
+	// State variables
+	enum { calm, one, two, three} ps, ns;
+
+	// Next State logic
+	always_comb begin
+		case (ps)
+			calm:	if (~SW[1] & ~SW[0])
+						ns = three;
+					else if (~SW[1] & SW[0])
+						ns = two;
+					else
+						ns = one;
+			one:	if (~SW[1])
+						ns = calm;
+					else
+						ns = two;
+			two:	if (~SW[0])
+						ns = calm;
+					else
+						ns = one;
+			three:	ns = calm;
+		endcase
+	end
+	
+	// Output logic - could also be another always_comb block.
+	assign LEDR[2] = ns[0];
+	assign LEDR[1] = ~(ns[1] | ns[0]);
+	assign LEDR[0] = ns[1];                                
+	
+	// DFFs
+	always_ff @(posedge clk) begin
+		if (reset)
+			ps <= calm;
+		else
+			ps <= ns;
+	end
+endmodule
+
+
+module lights_testbench();
+	logic [1:0] SW;
+	logic [2:0] LEDR;
+	logic clk, reset;
+	
+	SeaTacFinal dut ( .clk, .reset, .SW, .LEDR);
+	
+	// Set up a simulated clock.
+	parameter CLOCK_PERIOD=100;
+	initial begin
+		clk <= 0;
+		forever #(CLOCK_PERIOD/2) clk <= ~clk; // Forever toggle the clock
+	end
+	
+	// Set up the inputs to the design. Each line is a clock cycle.
+	initial begin
+		@(posedge clk);
+		reset <= 1;	 @(posedge clk);
+		reset <= 0;	 @(posedge clk);
+		SW <= 2'b00; @(posedge clk);
+						 @(posedge clk);
+						 @(posedge clk);
+		SW <= 2'b01; @(posedge clk);
+						 @(posedge clk);
+						 @(posedge clk);
+		SW <= 2'b10; @(posedge clk);
+						 @(posedge clk);
+						 @(posedge clk);
+		$stop; // End the simulation.
+	end
+endmodule

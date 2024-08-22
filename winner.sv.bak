@@ -1,0 +1,35 @@
+module winner (user, clk, reset, LED9, LED1, L, R);
+	input logic clk, reset;
+	input logic LED9, LED1, L, R;
+	output logic [6:0] winner;
+	
+	enum {off, P1, P2} ps, ns;
+	
+	always_comb begin
+		case(ps)
+			off:   if(LED9 & L & ~R) ns = P1;
+							
+					 else if(LED1 & R & ~L) ns = P2;
+					
+					 else ns = off;
+							
+			P1: ns = P1;
+			
+			P2: ns = P2;
+			
+		endcase
+	
+		if(ns == P1) user = 7'b1111001;
+		else if (ns == P2) user = 7'b0100100; 
+		else user = 7'b1111111;
+
+	end
+	
+	always_ff @(posedge clk) begin
+		if(reset)
+			ps <= off;
+		else
+			ps <= ns;
+	end
+	
+endmodule

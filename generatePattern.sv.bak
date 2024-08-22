@@ -1,0 +1,29 @@
+module generatePattern (clk, reset, enable, out);
+	input logic clk, reset, enable; 
+	output logic [15:0] out;
+	
+	logic [9:0] userIn; 
+	
+	LFSR l1 (.clk, .reset, .Q(userIn)); 
+	
+	integer x, i; 
+	
+	always_ff @(posedge clk) begin
+		if(reset) begin 
+			out <= 0;
+		end
+		else if (enable == 0) begin 
+			for (i = 0; i < 16; i++) begin 
+				if (i < x | i > (x + 4)) 
+					out[i] <= 1'b1; 
+				else 
+					out[i] <= 1'b0; 
+			end 
+		end 
+		else if(enable == 1) begin
+			a <= userIn % 9; 
+			out <= '0; 
+		end
+	end 
+	
+endmodule 

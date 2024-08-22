@@ -1,0 +1,11 @@
+module CyberPlayer(clk, reset, Q, SW, out);
+	input logic clk, reset; 
+	input logic [9:0] Q [8:0] SW; 
+	output logic out; 
+	
+	logic [9:0] temp; 
+	
+	assign temp = {1'b0, SW} 
+	
+	comparator AI(.clk, .reset, .A(temp), .B(Q), .true_false(out)); 
+endmodule 

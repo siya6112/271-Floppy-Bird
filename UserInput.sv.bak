@@ -1,0 +1,7 @@
+module UserInput(clk, reset, key, out);
+
+input logic clk, reset, key; 
+output logic out; 
+
+enum {on, off} ps, ns;
+endmodule 

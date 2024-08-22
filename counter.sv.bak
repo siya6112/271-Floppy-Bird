@@ -1,0 +1,129 @@
+module counter (clk, reset, LED9, LED1, L, R, user1, user2);
+	input logic clk, reset;
+	input logic LED9, LED1, L, R;
+	output logic [6:0] user;
+	
+	enum {noScore1, score11, score12 score13, score14, score15, score16, score17} ps1, ns1;
+	enum {noScore2, score21, score22 score23, score24, score25, score26, score27} ps2, ns2;
+	
+	always_comb begin
+		case(ps)
+			noScore1:  if(LED9 & L & ~R) ns1 = score11;
+					
+						 else ns1 = noScore1;
+							
+			score11:   if(LED9 & L & ~R) ns1 = score12;
+					
+						 else ns1 = score11;
+			
+			score12:   if(LED9 & L & ~R) ns1 = score13;
+					
+						 else ns1 = score12;
+						 
+			score13:   if(LED9 & L & ~R) ns1 = score14;
+					
+						 else ns1 = score13;
+						 
+			score14:   if(LED9 & L & ~R) ns1 = score15;
+					
+						 else ns1 = score14;
+						 
+			score15:   if(LED9 & L & ~R) ns1 = score16;
+					
+						 else ns1 = score15;
+						 
+			score16:   if(LED9 & L & ~R) ns1 = score17;
+					
+						 else ns1 = score16;
+						 
+			score17:   ns1 = score17;
+			
+		endcase
+		
+		if(ns == P1) user = 7'b1111001;
+		else if (ns == P2) user = 7'b0100100; 
+		else user = 7'b1111111;
+		
+		always_comb begin
+		case(ps)
+			noScore2:  if(LED9 & L & ~R) ns2 = score21;
+					
+						 else ns2 = noScore2;
+							
+			score21:   if(LED9 & L & ~R) ns1 = score22;
+					
+						 else ns2 = score21;
+			
+			score22:   if(LED9 & L & ~R) ns1 = score23;
+					
+						 else ns2 = score22;
+						 
+			score23:   if(LED9 & L & ~R) ns1 = score24;
+					
+						 else ns2 = score23;
+						 
+			score24:   if(LED9 & L & ~R) ns1 = score25;
+					
+						 else ns2 = score24;
+						 
+			score25:   if(LED9 & L & ~R) ns1 = score26;
+					
+						 else ns2 = score25;
+						 
+			score26:   if(LED9 & L & ~R) ns1 = score27;
+					
+						 else ns2 = score26;
+						 
+			score27:   ns2 = score27;
+			
+		endcase
+		
+		if(ns == P1) user = 7'b1111001;
+		else if (ns == P2) user = 7'b0100100; 
+		else user = 7'b1111111;
+
+	end
+	
+	always_ff @(posedge clk) begin
+		if(reset)
+			ps <= off;
+		else
+			ps <= ns;
+	end
+	
+endmodule
+
+//module winner_testbench();
+//	logic clk, reset, LED9, LED1, L, R, user;
+//	 
+//	winner dut (.clk, .reset, .LED9, .LED1, .L, .R, .user); 
+//	 
+//	parameter CLOCK_PERIOD = 100; 
+//	initial begin 
+//		clk <= 0; 
+//		forever #(CLOCK_PERIOD / 2)
+//		clk <= ~clk;
+//	end
+//	
+//	initial begin 
+//		reset <= 1; @(posedge clk);
+//		reset <= 0; @(posedge clk);
+//		LED9 <= 0; LED1 <= 0; L <= 0; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//									 L <= 1; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//					  LED1 <= 1; L <= 0; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//									 L <= 1; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//		LED9 <= 1; LED1 <= 0; L <= 0; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//									 L <= 1; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//					  LED1 <= 1; L <= 0; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//									 L <= 1; R <= 0; repeat(4) @(posedge clk);
+//												R <= 1; repeat(4) @(posedge clk);
+//		$stop;
+//	end
+//endmodule 

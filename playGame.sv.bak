@@ -1,0 +1,72 @@
+module playGame (clk, reset, in, bird, sw, RedPixels, GrnPixels);
+	input logic clk, reset, sw; 
+	input logic [15:0] bird; 
+	inout logic [15:0][15:0] in, RedPixels, GrnPixels;
+
+	enum {on, off} ps, ns;
+	
+	logic [15:0][15:0] endgame, during;
+	
+	assign during[00] = 0; 
+	assign during[01] = 0; 
+	assign during[02] = 0; 
+	assign during[03] = 0; 
+	assign during[04] = 0; 
+	assign during[05] = bird; 
+	assign during[06] = 0; 
+	assign during[07] = 0; 
+	assign during[08] = 0; 
+	assign during[09] = 0; 
+	assign during[10] = 0; 
+	assign during[11] = 0; 
+	assign during[12] = 0; 
+	assign during[13] = 0; 
+	assign during[14] = 0; 
+	assign during[15] = 0; 
+	
+	assign endgame[00] = 16'b0000000000000000; 
+	assign endgame[01] = 16'b0000001110000000;
+	assign endgame[02] = 16'b0000010001000000;
+	assign endgame[03] = 16'b0000001110000000;
+	assign endgame[04] = 16'b0000000000000000;
+	assign endgame[05] = 16'b0000001111000000;
+	assign endgame[06] = 16'b0000010000000000;
+	assign endgame[07] = 16'b0000001111000000;
+	assign endgame[08] = 16'b0000000000000000;
+	assign endgame[09] = 16'b0000011111000000;
+	assign endgame[10] = 16'b0000010101000000;
+	assign endgame[11] = 16'b0000010101000000;
+	assign endgame[12] = 16'b0000000000000000;
+	assign endgame[13] = 16'b0000011111000000;
+	assign endgame[14] = 16'b0000001101000000;
+	assign endgame[15] = 16'b0000010111000000;
+	
+	always_comb begin 
+		case (ps) 
+			on: if (switch) ns = off; 
+				 else ns = on; 
+			off: ns = off; 
+		endcase 
+	end 
+	
+	always_comb begin 
+		case(ps) 
+			on: RedPixels = during; 
+			off: RedPixels = endgame; 
+		endcase
+	end 
+	
+	always_comb begin 
+		case(ps) 
+			on: GrnPixels = in; 
+			off: GrnPixels = '0;
+		endcase
+	end 
+	
+	always_ff @(posedge clk) begin 
+		if (reset) 
+			ps <= on; 
+		else 
+			ps <= off; 
+	end 
+endmodule 

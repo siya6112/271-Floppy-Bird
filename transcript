@@ -1,0 +1,113 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:10:14 on Feb 21,2024
+# vlog -reportprogress 300 ./DE1_SoC_2.sv 
+# -- Compiling module DE1_SoC_2
+# -- Compiling module DE1_SoC_2_testbench
+# 
+# Top level modules:
+# 	DE1_SoC_2_testbench
+# End time: 16:10:15 on Feb 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:10:15 on Feb 21,2024
+# vlog -reportprogress 300 ./DFlipFlop.sv 
+# -- Compiling module DFlipFlop
+# 
+# Top level modules:
+# 	DFlipFlop
+# End time: 16:10:15 on Feb 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:10:16 on Feb 21,2024
+# vlog -reportprogress 300 ./clock_divider.sv 
+# -- Compiling module clock_divider
+# 
+# Top level modules:
+# 	clock_divider
+# End time: 16:10:16 on Feb 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:10:16 on Feb 21,2024
+# vlog -reportprogress 300 ./UserInput.sv 
+# -- Compiling module UserInput
+# -- Compiling module UserInput_testbench
+# 
+# Top level modules:
+# 	UserInput_testbench
+# End time: 16:10:16 on Feb 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:10:17 on Feb 21,2024
+# vlog -reportprogress 300 ./normalLight.sv 
+# -- Compiling module normalLight
+# -- Compiling module normalLight_testbench
+# 
+# Top level modules:
+# 	normalLight_testbench
+# End time: 16:10:17 on Feb 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:10:17 on Feb 21,2024
+# vlog -reportprogress 300 ./centerLight.sv 
+# -- Compiling module centerLight
+# -- Compiling module centerLight_testbench
+# 
+# Top level modules:
+# 	centerLight
+# 	centerLight_testbench
+# End time: 16:10:18 on Feb 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:10:18 on Feb 21,2024
+# vlog -reportprogress 300 ./winner.sv 
+# -- Compiling module winner
+# -- Compiling module winner_testbench
+# 
+# Top level modules:
+# 	winner_testbench
+# End time: 16:10:18 on Feb 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work DE1_SoC_2_testbench 
+# Start time: 16:10:18 on Feb 21,2024
+# Loading sv_std.std
+# Loading work.DE1_SoC_2_testbench
+# Loading work.DE1_SoC_2
+# Loading work.clock_divider
+# Loading work.DFlipFlop
+# Loading work.UserInput
+# Loading work.normalLight
+# Loading work.centerLight
+# Loading work.winner
+# ** Error: Cannot open macro file: DE1_SoC_2_wave.do
+# Error in macro ./runlab.do line 23
+# Cannot open macro file: DE1_SoC_2_wave.do
+#     while executing
+# "do DE1_SoC_2_wave.do"
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/CLOCK_50
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/HEX0
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/HEX1
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/HEX2
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/HEX3
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/HEX4
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/HEX5
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/LEDR
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/KEY
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/SW
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/reset
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/div_clk
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/key0
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/key3
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/input0
+add wave -position end  sim:/DE1_SoC_2_testbench/dut/input3
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: siyab  Hostname: EE-365PC09  ProcessID: 13024
+#           Attempting to use alternate WLF file "./wlfts97rq6".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfts97rq6
+run -all
+# ** Note: $stop    : ./DE1_SoC_2.sv(102)
+#    Time: 6750 ps  Iteration: 1  Instance: /DE1_SoC_2_testbench
+# Break in Module DE1_SoC_2_testbench at ./DE1_SoC_2.sv line 102

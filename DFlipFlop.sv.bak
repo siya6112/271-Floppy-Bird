@@ -1,0 +1,21 @@
+module DFlipFlop(clock, reset, key, out);
+
+input logic clock, reset, key;
+output logic out; 
+
+logic meta; 
+logic potential; 
+
+	always_ff @(posedge clk) begin
+		meta <= button;
+	end
+	
+	always_ff @(posedge clk) begin
+		potential <= meta;
+	end
+	
+	always_ff @(posedge clk) begin
+		out <= potential;
+	end
+	
+endmodule

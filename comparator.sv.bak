@@ -1,0 +1,19 @@
+//module comparator(clk, reset, A, B, true_false);
+module comparator(A, B, true_false);
+//	input logic clk, reset;
+	input logic [9:0] A, B; 
+	output logic true_false;
+
+	assign true_false = (A > B); 
+	
+//	logic temp; 
+//	
+//	always_comb begin
+//		 temp = (A > B); 
+//	end 
+//	
+//	always_ff @(posedge clk) begin
+//		true_false <= temp; 
+//	end
+
+endmodule 

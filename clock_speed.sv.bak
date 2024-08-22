@@ -1,0 +1,17 @@
+module clock_speed(clk, reset, enable);
+	parameter speed = 762; 
+	
+	input logic clk, reset; 
+	output logic enable; 
+	
+	logic count; 
+	
+	always_ff @(posedge clk) begin 
+		if (count == 0 | reset)
+			count <= speed; 
+		else 
+			count <= count - 1; 
+	end 
+	
+	assign enable = (count == 0); 
+endmodule 
